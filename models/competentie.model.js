@@ -19,7 +19,7 @@ const competentie = function (competentie) {
  * @returns
  */
 competentie.get = async function (page = 1) {
-  const rows = await db.query(`SELECT * FROM competenties LIMIT ?,?`, [
+  const rows = await db.query(`SELECT * FROM competentie LIMIT ?,?`, [
     helper.getOffset(page, process.env.LIST_PER_PAGE),
     Number(process.env.LIST_PER_PAGE),
   ])
@@ -36,7 +36,7 @@ competentie.get = async function (page = 1) {
  * @returns
  */
 competentie.getById = async function (competentieId) {
-  const rows = await db.query(`SELECT * FROM competenties WHERE competentieId = ?`, [competentieId])
+  const rows = await db.query(`SELECT * FROM competentie WHERE competentieId = ?`, [competentieId])
   return {
     data: helper.emptyOrRows(rows),
     meta: { page },
@@ -50,7 +50,7 @@ competentie.getById = async function (competentieId) {
  */
 competentie.post = async function (competentie) {
   const rows = await db.query(
-    `INSERT INTO competenties SET ${prepareQuery(competentie)}`,
+    `INSERT INTO competentie SET ${prepareQuery(competentie)}`,
     prepareParams(competentie)
   )
   competentie.competentieId = rows.insertId
@@ -70,7 +70,7 @@ competentie.post = async function (competentie) {
  */
 competentie.patch = async function (competentie) {
   const rows = await db.query(
-    `UPDATE competenties SET ${prepareQuery(competentie)} WHERE competentieId = ?`,
+    `UPDATE competentie SET ${prepareQuery(competentie)} WHERE competentieId = ?`,
     prepareParams(competentie)
   )
   return {
@@ -86,7 +86,7 @@ competentie.patch = async function (competentie) {
  */
 competentie.put = async function (competentie) {
   const rows = await db.query(
-    `UPDATE competenties SET ${prepareQuery(competentie)} WHERE competentieId = ?`,
+    `UPDATE competentie SET ${prepareQuery(competentie)} WHERE competentieId = ?`,
     prepareParams(competentie)
   )
   return {
@@ -101,7 +101,7 @@ competentie.put = async function (competentie) {
  * @returns
  */
 competentie.delete = async function (competentieId) {
-  const rows = await db.query(`DELETE FROM competenties WHERE competentieId = ?`, [competentieId])
+  const rows = await db.query(`DELETE FROM competentie WHERE competentieId = ?`, [competentieId])
   return {
     data: helper.emptyOrRows(rows),
     meta: {},
