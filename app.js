@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express')
 
 const indexRoute = require('./routes/index')
-const exampleRoute = require('./routes/example')
+const competentieRoute = require('./routes/competentie')
 const errorRoute = require('./routes/error')
 
 module.exports = express()
@@ -10,5 +10,5 @@ module.exports = express()
   .use(express.urlencoded({ extended: true }))
 
   .use('/', indexRoute)
-  .use('/v1/example', exampleRoute)
+  .use('/v1/competentie', competentieRoute)
   .use(errorRoute)
