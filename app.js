@@ -3,6 +3,8 @@ const express = require('express')
 
 const indexRoute = require('./routes/index')
 const competentieRoute = require('./routes/competentie')
+const vragenlijstRoute = require('./routes/vragenlijst')
+
 const errorRoute = require('./routes/error')
 
 module.exports = express()
@@ -11,4 +13,6 @@ module.exports = express()
 
   .use('/', indexRoute)
   .use('/v1/competentie', competentieRoute)
+  .use('/v1/vragenlijst', vragenlijstRoute)
+
   .use(errorRoute)
