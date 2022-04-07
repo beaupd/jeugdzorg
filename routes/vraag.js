@@ -8,7 +8,7 @@ module.exports = express
   .post('/', async (req, res, next) => {
     try {
       console.log('Got: ', req.body)
-      res.json(await Vraag.create(new Vraag(req.body)))
+      res.json(await Vraag.post(new Vraag(req.body)))
     } catch (err) {
       console.error('Error while adding: ', err.message)
       next(err)
